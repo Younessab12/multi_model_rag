@@ -7,6 +7,7 @@ Welcome to Multi-Model RAG Application Documentation!
 
    introduction
    installation
+   models
    usage
    code_documentation
 

@@ -21,9 +21,16 @@ import shutil
 
 # URL for the Ollama Llama model API
 llamaURL = "http://localhost:11434"
+model_db_names ={
+    "llama3.1": "llama3.1",
+    "mistral:latest": "mistral",
+    "0ssamaak0/silma-v1:latest": "silma",
+    "llama3.2:latest": "llama3.2",
+    "aya-expanse:latest": "aya-expanse"
+}
 
 # List of models to use
-models = ['llama3.1']
+models = ['llama3.1',"mistral:latest","0ssamaak0/silma-v1:latest","llama3.2:latest","aya-expanse:latest"]
 
 # Template for generating responses based on context and questions
 PROMPT_TEMPLATE = """
@@ -79,15 +86,15 @@ def add_pdf_to_chromadb(file_path: List[str], dp_path: str, chunk_size: int = 10
 
         # Adjust database path to include model name
         splited_dp_path = dp_path.split('/')
-        dp_path = '/'.join(splited_dp_path[:-1]) + f'/{model}/' + splited_dp_path[-1]
+        new_dp_path = '/'.join(splited_dp_path[:-1]) + f'/{model_db_names[model]}/' + splited_dp_path[-1]
 
         # Skip if database already exists
-        if os.path.exists(dp_path):
+        if os.path.exists(new_dp_path):
             continue
 
         # Create and persist database
         db = Chroma(
-            persist_directory=dp_path, embedding_function=embedding_model
+            persist_directory=new_dp_path, embedding_function=embedding_model
         )
         db.add_documents(context)
         db.persist()
@@ -95,7 +102,7 @@ def add_pdf_to_chromadb(file_path: List[str], dp_path: str, chunk_size: int = 10
         # Update database tracking
         if model not in dataBases:
             dataBases[model] = {}
-        dataBases[model][splited_dp_path[-1]] = dp_path
+        dataBases[model][splited_dp_path[-1]] = new_dp_path
 
     # Save updated database information to a JSON file
     with open('db.json', 'w') as f:
@@ -123,15 +130,15 @@ def add_text_to_chromadb(text: str, dp_path: str, chunk_size: int = 1000, chunk_
 
         # Adjust database path to include model name
         splited_dp_path = dp_path.split('/')
-        dp_path = '/'.join(splited_dp_path[:-1]) + f'/{model}/' + splited_dp_path[-1]
+        new_dp_path = '/'.join(splited_dp_path[:-1]) + f'/{model_db_names[model]}/' + splited_dp_path[-1]
 
         # Skip if database already exists
-        if os.path.exists(dp_path):
+        if os.path.exists(new_dp_path):
             continue
 
         # Create and persist database
         db = Chroma(
-            persist_directory=dp_path, embedding_function=embedding_model
+            persist_directory=new_dp_path, embedding_function=embedding_model
         )
         db.add_texts(texts=chunks)
         db.persist()
@@ -139,7 +146,7 @@ def add_text_to_chromadb(text: str, dp_path: str, chunk_size: int = 1000, chunk_
         # Update database tracking
         if model not in dataBases:
             dataBases[model] = {}
-        dataBases[model][splited_dp_path[-1]] = dp_path
+        dataBases[model][splited_dp_path[-1]] = new_dp_path
 
     # Save updated database information to a JSON file
     with open('db.json', 'w') as f:
@@ -219,10 +226,12 @@ if add_file:
             elif pdf_name in dataBases:
                 st.error('This PDF is already in the database')
             else:
-                with open(f'rag_env/docs/{pdf_name}', 'wb') as f:
+                if not os.path.exists('docs'):
+                    os.mkdir('docs')
+                with open(f'docs/{pdf_name}', 'wb') as f:
                     f.write(pdf.read())
                 with st.spinner('Adding to database'):
-                    add_pdf_to_chromadb([f'rag_env/docs/{pdf_name}'], f'rag_env/db/{pdf_name}')
+                    add_pdf_to_chromadb([f'docs/{pdf_name}'], f'rag_env/db/{pdf_name}')
                 st.success('Added to database')
 
 # Select the model

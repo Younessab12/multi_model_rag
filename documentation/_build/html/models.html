@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Models &mdash; RAG documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RAG documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-models">Supported Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-selection-in-the-app">Model Selection in the App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations-for-model-selection">Considerations for Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Considerations for Model Selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_documentation.html">Code Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RAG documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h1>
+<p>The Multi-Model RAG system supports several pre-trained models for embedding generation and question-answering. Each model is optimized for specific tasks, resource usage, and language capabilities, including support for Arabic.</p>
+<section id="supported-models">
+<h2>Supported Models<a class="headerlink" href="#supported-models" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>llama3.1</strong>:</p>
+<ul class="simple">
+<li><p><strong>Description</strong>:</p>
+<ul>
+<li><p>A foundational language model designed for a wide range of NLP tasks.</p></li>
+<li><p>Well-suited for general-purpose question-answering and contextual embeddings.</p></li>
+</ul>
+</li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Robust performance across diverse queries.</p></li>
+<li><p>Provides high-quality generative responses for retrieval-augmented scenarios.</p></li>
+</ul>
+</li>
+<li><p><strong>Best Languages</strong>:</p>
+<ul>
+<li><p>English (Primary support).</p></li>
+<li><p>Good support for Spanish, French, and German.</p></li>
+<li><p><strong>Limited support for Arabic</strong>: Can handle basic queries but not optimized for nuanced text.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Cases</strong>:</p>
+<ul>
+<li><p>General question-answering.</p></li>
+<li><p>Summarization and text generation.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>mistral:latest</strong>:</p>
+<ul class="simple">
+<li><p><strong>Description</strong>:</p>
+<ul>
+<li><p>A lightweight and efficient model optimized for fast inference.</p></li>
+<li><p>Balances performance and resource usage, making it ideal for real-time applications.</p></li>
+</ul>
+</li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Rapid response time.</p></li>
+<li><p>Efficient memory usage, suitable for low-resource environments.</p></li>
+</ul>
+</li>
+<li><p><strong>Best Languages</strong>:</p>
+<ul>
+<li><p>English (Primary focus).</p></li>
+<li><p>Supports basic processing for European languages such as Spanish and Italian.</p></li>
+<li><p><strong>Minimal support for Arabic</strong>: Handles simple tasks but not suited for complex queries.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Cases</strong>:</p>
+<ul>
+<li><p>High-speed, low-latency question-answering.</p></li>
+<li><p>Applications in resource-constrained environments.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>0ssamaak0/silma-v1:latest</strong>:</p>
+<ul class="simple">
+<li><p><strong>Description</strong>:</p>
+<ul>
+<li><p>A community-contributed model fine-tuned for domain-specific tasks.</p></li>
+<li><p>Focused on technical and niche queries requiring specialized knowledge.</p></li>
+</ul>
+</li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Excels in handling technical and scientific content.</p></li>
+<li><p>Optimized for retrieval-augmented generation workflows.</p></li>
+</ul>
+</li>
+<li><p><strong>Best Languages</strong>:</p>
+<ul>
+<li><p>English.</p></li>
+<li><p><strong>Best support for Arabic</strong>: Specifically fine-tuned to handle Arabic text effectively.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Cases</strong>:</p>
+<ul>
+<li><p>Domain-specific question-answering (e.g., medical, engineering).</p></li>
+<li><p>Technical content summarization and exploration.</p></li>
+<li><p>Ideal for Arabic-specific queries or datasets.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>llama3.2:latest</strong>:</p>
+<ul class="simple">
+<li><p><strong>Description</strong>:</p>
+<ul>
+<li><p>The latest version of the llama model, offering enhanced performance and accuracy.</p></li>
+<li><p>Designed for complex, multi-turn conversational tasks.</p></li>
+</ul>
+</li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Improved embedding generation for better context matching.</p></li>
+<li><p>Enhanced accuracy in generative tasks.</p></li>
+</ul>
+</li>
+<li><p><strong>Best Languages</strong>:</p>
+<ul>
+<li><p>English, Spanish, French.</p></li>
+<li><p>Preliminary support for multilingual tasks, including <strong>Arabic</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Cases</strong>:</p>
+<ul>
+<li><p>Complex conversational AI.</p></li>
+<li><p>Retrieval and summarization tasks requiring deep contextual understanding.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>aya-expanse:latest</strong>:</p>
+<ul class="simple">
+<li><p><strong>Description</strong>:</p>
+<ul>
+<li><p>A cutting-edge experimental model aimed at expansive, creative content generation.</p></li>
+<li><p>Optimized for knowledge discovery and exploratory question-answering.</p></li>
+</ul>
+</li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Excellent for generating detailed, nuanced responses.</p></li>
+<li><p>Handles ambiguous or exploratory queries with creativity.</p></li>
+</ul>
+</li>
+<li><p><strong>Best Languages</strong>:</p>
+<ul>
+<li><p>English (High proficiency).</p></li>
+<li><p>Limited multilingual capabilities for major languages like Spanish, German, and <strong>basic Arabic</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Cases</strong>:</p>
+<ul>
+<li><p>Knowledge discovery and research.</p></li>
+<li><p>Creative writing, brainstorming, and ideation.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="model-selection-in-the-app">
+<h2>Model Selection in the App<a class="headerlink" href="#model-selection-in-the-app" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>File Processing</strong>:</p>
+<ul>
+<li><p>Each model can process files (PDF or text) and store embeddings in a dedicated directory.</p></li>
+<li><p>The model selection determines the quality of embeddings and query responses.</p></li>
+</ul>
+</li>
+<li><p><strong>Query Handling</strong>:</p>
+<ul>
+<li><p>The selected model is used for both retrieval and generative tasks, ensuring optimized performance for specific use cases.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="considerations-for-model-selection">
+<h2>Considerations for Model Selection<a class="headerlink" href="#considerations-for-model-selection" title="Link to this heading"></a></h2>
+</section>
+<section id="id1">
+<h2>Considerations for Model Selection<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Languages</strong>:</p>
+<ul>
+<li><p>For <strong>Arabic and English</strong>, the models can perform as follows:</p>
+<ul>
+<li><p><strong>0ssamaak0/silma-v1:latest</strong>:</p>
+<ul>
+<li><p>Best for Arabic, as it is fine-tuned for Arabic text and provides robust support for English.</p></li>
+<li><p>Ideal for technical, scientific, or domain-specific queries in either language.</p></li>
+</ul>
+</li>
+<li><p><strong>llama3.2:latest</strong>:</p>
+<ul>
+<li><p>Excels in English tasks but also provides solid support for Arabic.</p></li>
+<li><p>Suitable for complex queries and multi-turn conversations in both languages.</p></li>
+</ul>
+</li>
+<li><p><strong>aya-expanse:latest</strong>:</p>
+<ul>
+<li><p>Provides creative and exploratory responses in both Arabic and English.</p></li>
+<li><p>May require more resources for nuanced Arabic tasks.</p></li>
+</ul>
+</li>
+<li><p><strong>llama3.1</strong>:</p>
+<ul>
+<li><p>A reliable general-purpose model with good support for English and basic handling of Arabic text.</p></li>
+</ul>
+</li>
+<li><p><strong>mistral:latest</strong>:</p>
+<ul>
+<li><p>Optimized for lightweight environments with good English support and basic Arabic capabilities.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Task Type</strong>:</p>
+<ul>
+<li><p>For <strong>Arabic-specific queries</strong> or <strong>bilingual content</strong>:</p>
+<ul>
+<li><p>Use <cite>0ssamaak0/silma-v1:latest</cite> for high-quality results in Arabic.</p></li>
+<li><p>Use <cite>llama3.2:latest</cite> for complex or conversational queries in both languages.</p></li>
+</ul>
+</li>
+<li><p>For <strong>creative or exploratory questions</strong>:</p>
+<ul>
+<li><p>Choose <cite>aya-expanse:latest</cite> for nuanced, expansive, and imaginative responses in both Arabic and English.</p></li>
+</ul>
+</li>
+<li><p>For <strong>general-purpose tasks</strong>:</p>
+<ul>
+<li><p>Use <cite>llama3.1</cite> for straightforward question-answering and summarization.</p></li>
+</ul>
+</li>
+<li><p>For <strong>resource-constrained tasks</strong>:</p>
+<ul>
+<li><p>Choose <cite>mistral:latest</cite>, which works well for simple queries in English and basic Arabic tasks.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Performance and Resource Usage</strong>:</p>
+<ul>
+<li><p><strong>Low-resource environments</strong>:</p>
+<ul>
+<li><p><cite>mistral:latest</cite> is the best choice for efficient inference while supporting both Arabic and English to a reasonable extent.</p></li>
+</ul>
+</li>
+<li><p><strong>High-performance tasks</strong>:</p>
+<ul>
+<li><p><cite>llama3.2:latest</cite> or <cite>aya-expanse:latest</cite> are recommended for advanced retrieval, generation, and multi-turn conversations.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>This detailed breakdown ensures users can select the best model for their needs, balancing language proficiency, task complexity, and computational resources.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, youness aabibi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
